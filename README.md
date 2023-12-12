@@ -1,1 +1,1 @@
-There is my bush homework # ddubBush
+This is my bash homework # ddubBush
