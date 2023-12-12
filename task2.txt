@@ -1,0 +1,90 @@
+>1.	Зайти в домашнюю директорию
+$ cd ~/Documents/ddubBashHW 
+<Или сразу открыть нужную папку используя Open Folder  в VSCode>
+
+>2.	Создать папку test 3
+$ mkdir test3
+
+>3.	Добавить в папку test 3 три файла 4, 5 и 6, в каждом из которых должно быть по 4 строки row1, row2, row3, row4
+$ touch test3/4.txt test3/5.txt test3/6.txt
+$ nano test3/4.txt test3/5.txt test3/6.txt <Поочередно добавляем в каждый из указанных файлов строки row1, row2, row3, row4 внутри редактора>
+
+>4.	Найдите строку row2 в файле 5
+$  grep -i 'row2' test3/5.txt
+>Ответ
+ row2
+
+>5.	Найдите строку row в папке test3
+$  grep -r "row*" test3
+>Ответ
+ test3/4.txt:row1
+ test3/4.txt:row2
+ test3/4.txt:row3
+ test3/4.txt:row4
+ test3/5.txt:row1
+ test3/5.txt:row2
+ test3/5.txt:row3
+ test3/5.txt:row4
+ test3/6.txt:row1
+ test3/6.txt:row2
+ test3/6.txt:row3
+ test3/6.txt:row4
+
+>6.	Посчитайте сколько строк с содержимым row в файле 6
+$ grep -c 'row' test3/6.txt
+>Ответ
+ 4
+
+>7.	Найдите файл 5 внутри папки test3
+$ find test3 -name "5.txt"
+>Ответ
+ test3/5.txt
+ 
+>8.	Используя команду find, удалите файл 5
+$ find test3 -name "5.txt" -delete
+
+>9.	Используя команду echo, добавьте слово test в файл 4
+$ echo 'test' >>test3/4.txt
+
+>10.	Замените слово test в файле 4 на fail
+$ sed -i 's/test/fail/' test3/4.txt
+
+>11.	Добавьте в файл 4 слово test так, чтобы сохранилось содержимое
+$ echo 'test' >>test3/4.txt
+
+>12.	Просмотрите все процессы для юзеров не только в консоли, которые происходят в системе
+$ ps aux
+
+>13.	Убейте процесс 666 в консоли
+$ kill 666
+
+>14.	Узнайте доступность ресурса artsiomrusau.com, используя ping
+$ ping artsiomrusau.com
+>Ответ
+Pinging artsiomrusau.com [185.215.4.92] with 32 bytes of data:
+Request timed out.
+Request timed out.
+Request timed out.
+Request timed out.
+
+Ping statistics for 185.215.4.92:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+	
+>15.	Отправьте 5 пакетов на сайт artsiomrusau.com
+$ ping -c5 artsiomrusau.com 
+
+>16.	Используя GET и команду curl, получите информацию о зарегистрированных питомцах на https://petstore.swagger.io/
+$ curl "https://petstore.swagger.io/v2/pet/findByStatus?status=available&status=sold&status=pending"
+
+>17.	Используя POST и команду curl, создайте нового пользователя на https://petstore.swagger.io/
+$ curl -X POST -H "Content-Type: application/json" -d '{
+  "id": 0,
+  "username": "imnewuser",
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john.doe@gmail.com",
+  "password": "123",
+  "phone": "1234567890",
+  "userStatus": 0
+}' https://petstore.swagger.io/v2/user
+
